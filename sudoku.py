@@ -7,7 +7,7 @@ def print_grid(arr):
 	
 	for i in range(9): 
 		for j in range(9): 
-			print arr[i][j] if arr[i][j]>0 else ' ', 
+			print (arr[i][j] if arr[i][j]>0 else ' ',end=' ') 
 		print (' ') 
 
 
@@ -18,9 +18,9 @@ def print_grid_two(arr, row, col, num):
 	for i in range(9): 
 		for j in range(9): 
 			if i == row and j == col:
-				print num,
+				print (num,end=' ')
 			else:
-				print arr[i][j] if arr[i][j]>0 else ' ', 
+				print (arr[i][j] if arr[i][j]>0 else ' ',end=' ') 
 		print (' ') 
 
 
@@ -74,14 +74,14 @@ def check_location_is_safe(arr,row,col,num):
 	# Check if 'num' is not already placed in current row, 
 	# current column and current 3x3 box
 	# arr[row][col] = num 
-	print 'Initial config'
+	print ('Initial config')
 	print_grid(gridor)
-	print
-	print
-	print 'Solving'
+	print()
+	print()
+	print ('Solving')
 	print_grid_two(grid, row, col, num) 
 	time.sleep(0.5)
-	a = raw_input('')
+	a = input('')
 	os.system('clear')
 
 	if not used_in_row(arr,row,num) and not used_in_col(arr,col,num) and not used_in_box(arr,row - row%3,col - col%3,num):
@@ -112,13 +112,13 @@ def solve_sudoku(arr):
 	for num in range(1,10): 
 		
 		# if looks promising
-		print 'Initial config'
+		print ('Initial config')
 		print_grid(gridor) 
-		print
-		print
-		print 'Solving'
+		print()
+		print()
+		print ('Solving')
 		print_grid(grid)
-		a=raw_input('')
+		a=input('')
 		os.system('clear')
  
 		if(check_location_is_safe(arr,row,col,num)): 
@@ -140,11 +140,11 @@ def solve_sudoku(arr):
 
 			# failure, unmake & try again 
 			arr[row][col] = 0
-			print 'Initial config'
+			print ('Initial config')
 			print_grid(gridor)
-			print
-			print
-			print 'Solving'
+			print ()
+			print ()
+			print ('Solving')
 			print_grid(grid)
 			time.sleep(0.5)
 			os.system('clear')
@@ -189,16 +189,16 @@ if __name__=="__main__":
 
 	# if success print the grid 
 	if(solve_sudoku(grid)):
-		print 'Initial config'
+		print ('Initial config')
 		print_grid(gridor)
-		print
-		print
-		print 'Solved'
+		print()
+		print()
+		print ('Solved')
 		print_grid(grid)
 		
 	else: 
-		print 'Initial config'
+		print ('Initial config')
 		print_grid(gridor)
-		print
-		print
-		print "No solution exists"
+		print()
+		print()
+		print ("No solution exists")
